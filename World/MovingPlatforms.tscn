@@ -29,6 +29,8 @@ __meta__ = {
 }
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
 motion/sync_to_physics = true
 
 [node name="Sprite" type="Sprite" parent="KinematicBody2D"]
