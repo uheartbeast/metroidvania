@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 const DustEffect = preload("res://Effects/DustEffect.tscn")
+const JumpEffect = preload("res://Effects/JumpEffect.tscn")
 const PlayerBullet = preload("res://Player/PlayerBullet.tscn")
 
 export (int) var ACCELERATION = 512
@@ -69,6 +70,7 @@ func update_snap_vector():
 func jump_check():
 	if is_on_floor() or coyoteJumpTimer.time_left > 0:
 		if Input.is_action_just_pressed("ui_up"):
+			Utils.instance_scene_on_main(JumpEffect, global_position)
 			motion.y = -JUMP_FORCE
 			just_jumped = true
 			snap_vector = Vector2.ZERO
@@ -103,7 +105,7 @@ func move():
 	# Landing
 	if was_in_air and is_on_floor():
 		motion.x = last_motion.x
-		create_dust_effect()
+		Utils.instance_scene_on_main(JumpEffect, global_position)
 	
 	# Just left ground
 	if was_on_floor and not is_on_floor() and not just_jumped:
