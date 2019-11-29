@@ -15,6 +15,7 @@ onready var wallRight = $WallRight
 func _ready():
 	state = WALKING_DIRECTION
 
+# warning-ignore:unused_argument
 func _physics_process(delta):
 	match state:
 		DIRECTION.RIGHT:
