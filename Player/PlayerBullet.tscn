@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/PlayerBullet.gd" type="Script" id=2]
@@ -35,6 +35,9 @@ tracks/1/keys = {
 } ]
 }
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 3, 2 )
+
 [node name="PlayerBullet" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
@@ -46,3 +49,11 @@ frame = 1
 [node name="AnimationPlayer" parent="." index="2"]
 autoplay = "Fire"
 anims/Fire = SubResource( 1 )
+
+[node name="Hitbox" parent="." index="3"]
+collision_mask = 10
+
+[node name="Collider" parent="Hitbox" index="0"]
+shape = SubResource( 2 )
+
+[editable path="Hitbox"]

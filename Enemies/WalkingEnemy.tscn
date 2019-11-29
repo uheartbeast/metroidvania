@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemies/WalkingEnemy.gd" type="Script" id=2]
@@ -7,7 +7,10 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2, 6 )
 
-[node name="WalkingEnemy" index="0" instance=ExtResource( 1 )]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 7 )
+
+[node name="WalkingEnemy" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 WALKING_DIRECTION = 1
 
@@ -44,3 +47,9 @@ position = Vector2( 0, -8 )
 enabled = true
 cast_to = Vector2( 6, 0 )
 collision_mask = 2
+
+[node name="Collider" parent="Hurtbox" index="0"]
+position = Vector2( 0, -7 )
+shape = SubResource( 2 )
+
+[editable path="Hurtbox"]

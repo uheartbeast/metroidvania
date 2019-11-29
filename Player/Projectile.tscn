@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Player/Projectile.gd" type="Script" id=1]
+[ext_resource path="res://CollisionBoxes/Hitbox.tscn" type="PackedScene" id=2]
 
 [node name="Projectile" type="Node2D"]
 script = ExtResource( 1 )
@@ -11,4 +12,8 @@ script = ExtResource( 1 )
 rect = Rect2( -4, -4, 8, 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Hitbox" parent="." instance=ExtResource( 2 )]
 [connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
