@@ -1,0 +1,4 @@
+[gd_resource type="RectangleShape2D" format=2]
+
+[resource]
+extents = Vector2( 4, 7 )

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://CollisionBoxes/Hurtbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemies/EnemyStats.tscn" type="PackedScene" id=3]
+[ext_resource path="res://CollisionBoxes/Hitbox.tscn" type="PackedScene" id=4]
 
 [node name="Enemy" type="KinematicBody2D"]
 collision_layer = 0
@@ -19,5 +20,8 @@ script = ExtResource( 1 )
 collision_layer = 8
 
 [node name="EnemyStats" parent="." instance=ExtResource( 3 )]
+
+[node name="Hitbox" parent="." instance=ExtResource( 4 )]
+collision_mask = 4
 [connection signal="hit" from="Hurtbox" to="." method="_on_Hurtbox_hit"]
 [connection signal="enemy_died" from="EnemyStats" to="." method="_on_EnemyStats_enemy_died"]

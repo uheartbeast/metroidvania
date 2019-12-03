@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.png" type="Texture" id=2]
 [ext_resource path="res://Player/PlayerGun.tscn" type="PackedScene" id=3]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4, 7 )
+[ext_resource path="res://Player/PlayerCollider.tres" type="Shape2D" id=4]
+[ext_resource path="res://CollisionBoxes/Hurtbox.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=2]
 resource_name = "Idle"
@@ -74,6 +73,39 @@ tracks/1/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=5]
+resource_name = "Blink"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true, false, true, false, true ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "set_invincible"
+}, {
+"args": [ false ],
+"method": "set_invincible"
+} ]
+}
+
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 2
 script = ExtResource( 1 )
@@ -90,12 +122,15 @@ position = Vector2( 1, 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -7 )
-shape = SubResource( 1 )
+shape = ExtResource( 4 )
 
 [node name="SpriteAnimator" type="AnimationPlayer" parent="."]
 anims/Idle = SubResource( 2 )
 anims/Jump = SubResource( 3 )
 anims/Run = SubResource( 4 )
+
+[node name="BlinkAnimator" type="AnimationPlayer" parent="."]
+anims/Blink = SubResource( 5 )
 
 [node name="CameraFollow" type="RemoteTransform2D" parent="."]
 position = Vector2( 0, -8 )
@@ -109,3 +144,13 @@ one_shot = true
 [node name="FireBulletTimer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="Hurtbox" parent="." instance=ExtResource( 5 )]
+collision_layer = 4
+
+[node name="Collider" parent="Hurtbox" index="0"]
+position = Vector2( 0, -7 )
+shape = ExtResource( 4 )
+[connection signal="hit" from="Hurtbox" to="." method="_on_Hurtbox_hit"]
+
+[editable path="Hurtbox"]
