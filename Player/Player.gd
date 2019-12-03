@@ -4,6 +4,8 @@ const DustEffect = preload("res://Effects/DustEffect.tscn")
 const JumpEffect = preload("res://Effects/JumpEffect.tscn")
 const PlayerBullet = preload("res://Player/PlayerBullet.tscn")
 
+var PlayerStats = ResourceLoader.PlayerStats
+
 export (int) var ACCELERATION = 512
 export (int) var MAX_SPEED = 64
 export (float) var FRICTION = 0.25
@@ -27,6 +29,9 @@ onready var muzzle = $Sprite/PlayerGun/Sprite/Muzzle
 
 func set_invincible(value):
 	invincible = value
+
+func _ready():
+	PlayerStats.connect("player_died", self, "_on_died")
 
 func _physics_process(delta):
 	just_jumped = false
@@ -124,4 +129,8 @@ func move():
 
 func _on_Hurtbox_hit(damage):
 	if not invincible:
+		PlayerStats.health -= damage
 		blinkAnimator.play("Blink")
+
+func _on_died():
+	queue_free()
