@@ -5,9 +5,13 @@
 [ext_resource path="res://World/Camera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/TileMap.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/MovingPlatforms.tscn" type="PackedScene" id=5]
-[ext_resource path="res://World/RightLeft.tres" type="Curve2D" id=6]
-[ext_resource path="res://Enemies/WalkingEnemy.tscn" type="PackedScene" id=7]
-[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemies/WalkingEnemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 0 )
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "Loop"
@@ -46,32 +50,24 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 1, 2, 0, 1, 3, 0, 1, 4, 0, 1, 5, 0, 1, 
 position = Vector2( 48, 128 )
 
 [node name="MovingPlatforms2" parent="." instance=ExtResource( 5 )]
-editor/display_folded = true
 position = Vector2( 192, 96 )
 
-[node name="KinematicBody2D" parent="MovingPlatforms2" index="0"]
-position = Vector2( 40.8206, 0 )
-
 [node name="Path2D" parent="MovingPlatforms2" index="1"]
-curve = ExtResource( 6 )
-
-[node name="PathFollow2D" parent="MovingPlatforms2/Path2D" index="0"]
-position = Vector2( 40.8206, 0 )
-offset = 40.8284
+curve = SubResource( 2 )
 
 [node name="AnimationPlayer" parent="MovingPlatforms2" index="2"]
 anims/Loop = SubResource( 1 )
 
-[node name="WalkingEnemy" parent="." instance=ExtResource( 7 )]
+[node name="WalkingEnemy" parent="." instance=ExtResource( 6 )]
 position = Vector2( 80, 144 )
 
-[node name="WalkingEnemy2" parent="." instance=ExtResource( 7 )]
+[node name="WalkingEnemy2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 208, 160 )
 
-[node name="WalkingEnemy3" parent="." instance=ExtResource( 7 )]
+[node name="WalkingEnemy3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 288, 112 )
 
-[node name="UI" parent="." instance=ExtResource( 8 )]
+[node name="UI" parent="." instance=ExtResource( 7 )]
 
 [editable path="Player"]
 
