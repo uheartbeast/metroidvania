@@ -8,13 +8,12 @@
 [ext_resource path="res://Enemies/WalkingEnemy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=7]
 
-[sub_resource type="Curve2D" id=2]
+[sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 0 )
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "Loop"
+[sub_resource type="Animation" id=2]
 length = 4.0
 loop = true
 tracks/0/type = "value"
@@ -53,10 +52,10 @@ position = Vector2( 48, 128 )
 position = Vector2( 192, 96 )
 
 [node name="Path2D" parent="MovingPlatforms2" index="1"]
-curve = SubResource( 2 )
+curve = SubResource( 1 )
 
 [node name="AnimationPlayer" parent="MovingPlatforms2" index="2"]
-anims/Loop = SubResource( 1 )
+anims/Loop = SubResource( 2 )
 
 [node name="WalkingEnemy" parent="." instance=ExtResource( 6 )]
 position = Vector2( 80, 144 )
