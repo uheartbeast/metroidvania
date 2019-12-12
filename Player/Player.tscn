@@ -6,7 +6,7 @@
 [ext_resource path="res://Player/PlayerCollider.tres" type="Shape2D" id=4]
 [ext_resource path="res://CollisionBoxes/Hurtbox.tscn" type="PackedScene" id=5]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "Idle"
 length = 1.2
 loop = true
@@ -23,7 +23,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "Jump"
 length = 0.1
 tracks/0/type = "value"
@@ -39,7 +39,7 @@ tracks/0/keys = {
 "values": [ 11 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "Run"
 length = 0.6
 loop = true
@@ -73,7 +73,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "Blink"
 length = 0.9
 tracks/0/type = "value"
@@ -125,12 +125,12 @@ position = Vector2( 0, -7 )
 shape = ExtResource( 4 )
 
 [node name="SpriteAnimator" type="AnimationPlayer" parent="."]
-anims/Idle = SubResource( 2 )
-anims/Jump = SubResource( 3 )
-anims/Run = SubResource( 4 )
+anims/Idle = SubResource( 1 )
+anims/Jump = SubResource( 2 )
+anims/Run = SubResource( 3 )
 
 [node name="BlinkAnimator" type="AnimationPlayer" parent="."]
-anims/Blink = SubResource( 5 )
+anims/Blink = SubResource( 4 )
 
 [node name="CameraFollow" type="RemoteTransform2D" parent="."]
 position = Vector2( 0, -8 )

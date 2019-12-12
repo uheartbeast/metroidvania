@@ -17,21 +17,40 @@ anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 128.0
-margin_top = 72.0
+margin_top = 42.0
 margin_right = 192.0
-margin_bottom = 108.0
+margin_bottom = 137.0
+
+[node name="PauseLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 64.0
+margin_bottom = 15.0
+text = "GAME PAUSED!"
+align = 1
+
+[node name="Gap" type="Control" parent="CenterContainer/VBoxContainer"]
+margin_top = 19.0
+margin_right = 64.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 0, 8 )
 
 [node name="ResumeButton" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 31.0
 margin_right = 64.0
-margin_bottom = 16.0
+margin_bottom = 47.0
 rect_min_size = Vector2( 64, 16 )
 text = "Resume Game"
 
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 20.0
+margin_top = 51.0
 margin_right = 64.0
-margin_bottom = 36.0
+margin_bottom = 67.0
 rect_min_size = Vector2( 64, 16 )
 text = "Quit"
+
+[node name="Gap2" type="Control" parent="CenterContainer/VBoxContainer"]
+margin_top = 71.0
+margin_right = 64.0
+margin_bottom = 95.0
+rect_min_size = Vector2( 0, 24 )
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
