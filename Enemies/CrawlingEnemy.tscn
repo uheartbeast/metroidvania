@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Enemies/CrawlingEnemy.gd" type="Script" id=2]
+[ext_resource path="res://Enemies/CrawlingEnemy.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=3]
+resource_name = "Animate"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 3 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 5, 2 )
+
+[node name="CrawlingEnemy" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 0, -8 )
+texture = ExtResource( 3 )
+hframes = 4
+frame = 1
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "Animate"
+anims/Animate = SubResource( 3 )
+
+[node name="Collider" parent="Hurtbox" index="0"]
+position = Vector2( 0, -4 )
+shape = SubResource( 1 )
+
+[node name="Collider" parent="Hitbox" index="0"]
+position = Vector2( 0, -2 )
+shape = SubResource( 2 )
+
+[node name="FloorCast" type="RayCast2D" parent="." index="6"]
+position = Vector2( 0, -4 )
+enabled = true
+cast_to = Vector2( 0, 8 )
+collision_mask = 2
+
+[node name="WallCast" type="RayCast2D" parent="." index="7"]
+position = Vector2( 0, -4 )
+enabled = true
+cast_to = Vector2( 4, 0 )
+collision_mask = 2
+
+[editable path="Hurtbox"]
+
+[editable path="Hitbox"]
