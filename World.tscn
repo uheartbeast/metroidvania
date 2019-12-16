@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Enemies/WalkingEnemy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Enemies/FlyingEnemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemies/PlantEnemy.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -50,6 +51,7 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 1, 2, 0, 5, 3, 0, 196609, 4, 0, 196609,
 position = Vector2( 448, 128 )
 
 [node name="MovingPlatforms2" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
 position = Vector2( 192, 96 )
 
 [node name="Path2D" parent="MovingPlatforms2" index="1"]
@@ -68,6 +70,13 @@ position = Vector2( 288, 112 )
 
 [node name="FlyingEnemy" parent="." instance=ExtResource( 8 )]
 position = Vector2( 480, 80 )
+
+[node name="PlantEnemy" parent="." instance=ExtResource( 9 )]
+position = Vector2( 240, 160 )
+
+[node name="PlantEnemy2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 336, 16 )
+rotation = 3.14159
 
 [editable path="Player"]
 
