@@ -80,7 +80,9 @@ func _physics_process(delta):
 		fire_bullet()
 	
 	if Input.is_action_pressed("fire_missile") and fireBulletTimer.time_left == 0:
-		fire_missile()
+		if PlayerStats.missiles > 0:
+			fire_missile()
+			PlayerStats.missiles -= 1
 
 func fire_bullet():
 	var bullet = Utils.instance_scene_on_main(PlayerBullet, muzzle.global_position)
