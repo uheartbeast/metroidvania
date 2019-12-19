@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Enemies/PlantEnemy.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Enemies/CrawlingEnemy.tscn" type="PackedScene" id=10]
 [ext_resource path="res://World/Brick.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Player/MissilesPowerup.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -92,6 +93,9 @@ position = Vector2( 80, 80 )
 
 [node name="Brick3" parent="." instance=ExtResource( 11 )]
 position = Vector2( 96, 80 )
+
+[node name="MissilesPowerup" parent="." instance=ExtResource( 12 )]
+position = Vector2( 80, 64 )
 
 [editable path="Player"]
 

@@ -5,6 +5,7 @@
 [ext_resource path="res://UI/PixelFont.tres" type="DynamicFont" id=3]
 
 [node name="MissilesUI" type="HBoxContainer"]
+visible = false
 margin_right = 17.0
 margin_bottom = 10.0
 custom_constants/separation = 0
