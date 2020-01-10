@@ -1,0 +1,6 @@
+[gd_scene format=2]
+
+[node name="Trigger" type="Area2D"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
