@@ -1,14 +1,15 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Enemies/BossEnemyBody.png" type="Texture" id=2]
-[ext_resource path="res://Enemies/BossEnemyHead.png" type="Texture" id=3]
-[ext_resource path="res://Enemies/BossEnemyWing.png" type="Texture" id=4]
-[ext_resource path="res://Enemies/BossEnemyLeg1.png" type="Texture" id=5]
-[ext_resource path="res://Enemies/BossEnemyLeg2.png" type="Texture" id=6]
-[ext_resource path="res://Enemies/BossEnemyLeg3.png" type="Texture" id=7]
+[ext_resource path="res://Enemies/BossEnemy.gd" type="Script" id=2]
+[ext_resource path="res://Enemies/BossEnemyBody.png" type="Texture" id=3]
+[ext_resource path="res://Enemies/BossEnemyHead.png" type="Texture" id=4]
+[ext_resource path="res://Enemies/BossEnemyWing.png" type="Texture" id=5]
+[ext_resource path="res://Enemies/BossEnemyLeg1.png" type="Texture" id=6]
+[ext_resource path="res://Enemies/BossEnemyLeg2.png" type="Texture" id=7]
+[ext_resource path="res://Enemies/BossEnemyLeg3.png" type="Texture" id=8]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "Base"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite/LeftUpperLeg:position")
@@ -491,7 +492,7 @@ tracks/39/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "Fly"
 length = 0.8
 loop = true
@@ -688,41 +689,44 @@ tracks/15/keys = {
 "values": [ 22.11, -6.85355 ]
 }
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=3]
 radius = 16.0
 
-[sub_resource type="RayShape2D" id=2]
+[sub_resource type="RayShape2D" id=4]
 length = 16.0
 
 [node name="BossEnemy" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+MAX_SPEED = 50
 
 [node name="Sprite" parent="." index="0"]
+editor/display_folded = true
 position = Vector2( 0, 0.777778 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="HeadSprite" type="Sprite" parent="Sprite" index="0"]
 position = Vector2( 0, -7.88889 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="LeftWingSprite" type="Sprite" parent="Sprite" index="1"]
 show_behind_parent = true
 position = Vector2( -10, -18 )
 rotation = 0.785398
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 offset = Vector2( -21, -5 )
 
 [node name="RightWingSprite" type="Sprite" parent="Sprite" index="2"]
 show_behind_parent = true
 position = Vector2( 10, -18 )
 rotation = -0.785398
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 offset = Vector2( 21, -5 )
 flip_h = true
 
 [node name="LeftUpperLeg" type="Sprite" parent="Sprite" index="3"]
 position = Vector2( -12, -12 )
 rotation = 0.0141726
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 offset = Vector2( -4, 1 )
 __meta__ = {
 "_edit_ik_": true
@@ -731,7 +735,7 @@ __meta__ = {
 [node name="MiddleSegment" type="Sprite" parent="Sprite/LeftUpperLeg" index="0"]
 position = Vector2( -12, 3 )
 rotation = -0.0726559
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 offset = Vector2( -2, 4 )
 __meta__ = {
 "_edit_bone_": true
@@ -740,7 +744,7 @@ __meta__ = {
 [node name="EndSegment" type="Sprite" parent="Sprite/LeftUpperLeg/MiddleSegment" index="0"]
 position = Vector2( -6, 10 )
 rotation = 0.320282
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 offset = Vector2( 1, 2 )
 __meta__ = {
 "_edit_bone_": true
@@ -755,7 +759,7 @@ __meta__ = {
 [node name="RightUpperLeg" type="Sprite" parent="Sprite" index="4"]
 position = Vector2( 12, -12 )
 rotation = 0.0352521
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 offset = Vector2( 5, 1 )
 flip_h = true
 __meta__ = {
@@ -765,7 +769,7 @@ __meta__ = {
 [node name="MiddleSegment" type="Sprite" parent="Sprite/RightUpperLeg" index="0"]
 position = Vector2( 12, 3 )
 rotation = -0.0761676
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 offset = Vector2( 3, 4 )
 flip_h = true
 __meta__ = {
@@ -775,7 +779,7 @@ __meta__ = {
 [node name="EndSegment" type="Sprite" parent="Sprite/RightUpperLeg/MiddleSegment" index="0"]
 position = Vector2( 6, 10 )
 rotation = -0.220883
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 offset = Vector2( -1, 2 )
 flip_h = true
 __meta__ = {
@@ -791,7 +795,7 @@ __meta__ = {
 [node name="LeftLowerLeg" type="Sprite" parent="Sprite" index="5"]
 position = Vector2( -9, 0 )
 rotation = -0.207953
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 offset = Vector2( -4, 1 )
 __meta__ = {
 "_edit_ik_": true
@@ -800,7 +804,7 @@ __meta__ = {
 [node name="MiddleSegment" type="Sprite" parent="Sprite/LeftLowerLeg" index="0"]
 position = Vector2( -12, 3 )
 rotation = -0.280154
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 offset = Vector2( -2, 4 )
 __meta__ = {
 "_edit_bone_": true
@@ -809,7 +813,7 @@ __meta__ = {
 [node name="EndSegment" type="Sprite" parent="Sprite/LeftLowerLeg/MiddleSegment" index="0"]
 position = Vector2( -6, 10 )
 rotation = 0.129451
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 offset = Vector2( 1, 2 )
 __meta__ = {
 "_edit_bone_": true
@@ -824,7 +828,7 @@ __meta__ = {
 [node name="RightLowerLeg" type="Sprite" parent="Sprite" index="6"]
 position = Vector2( 9, 0 )
 rotation = 0.207953
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 offset = Vector2( 5, 1 )
 flip_h = true
 __meta__ = {
@@ -834,7 +838,7 @@ __meta__ = {
 [node name="MiddleSegment" type="Sprite" parent="Sprite/RightLowerLeg" index="0"]
 position = Vector2( 12, 3 )
 rotation = 0.280154
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 offset = Vector2( 3, 4 )
 flip_h = true
 __meta__ = {
@@ -844,7 +848,7 @@ __meta__ = {
 [node name="EndSegment" type="Sprite" parent="Sprite/RightLowerLeg/MiddleSegment" index="0"]
 position = Vector2( 6, 10 )
 rotation = -0.129182
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 offset = Vector2( -1, 2 )
 flip_h = true
 __meta__ = {
@@ -859,18 +863,33 @@ __meta__ = {
 
 [node name="AnimationPlayer" parent="." index="2"]
 autoplay = "Fly"
-anims/Base = SubResource( 3 )
-anims/Fly = SubResource( 4 )
+anims/Base = SubResource( 1 )
+anims/Fly = SubResource( 2 )
 
 [node name="Collider" parent="Hurtbox" index="0"]
 position = Vector2( 0, -7 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="EnemyStats" parent="." index="4"]
 max_health = 100
 
 [node name="Collider" parent="Hitbox" index="0"]
-shape = SubResource( 2 )
+shape = SubResource( 4 )
+
+[node name="RightWallCheck" type="RayCast2D" parent="." index="6"]
+enabled = true
+cast_to = Vector2( 16, 0 )
+collision_mask = 2
+
+[node name="LeftWallCheck" type="RayCast2D" parent="." index="7"]
+enabled = true
+cast_to = Vector2( 16, 0 )
+collision_mask = 2
+
+[node name="Timer" type="Timer" parent="." index="8"]
+wait_time = 0.3
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 [editable path="Hurtbox"]
 
