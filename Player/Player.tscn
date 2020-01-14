@@ -121,7 +121,9 @@ tracks/1/keys = {
 } ]
 }
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"Persists",
+]]
 collision_mask = 2
 script = ExtResource( 1 )
 
