@@ -6,6 +6,11 @@ onready var currentLevel = $Level_00
 
 func _ready():
 	VisualServer.set_default_clear_color(Color.black)
+	
+	if SaverAndLoader.is_loading:
+		SaverAndLoader.load_game()
+		SaverAndLoader.is_loading = false
+	
 	MainInstances.Player.connect("hit_door", self, "_on_Player_hit_door")
 
 func change_levels(door):
