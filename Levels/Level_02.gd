@@ -1,8 +1,6 @@
 extends "res://Levels/Level.gd"
 
 const PLAYER_BIT = 0
-
-onready var bossEnemy = $BossEnemy
 onready var blockDoor = $BlockDoor
 
 func set_block_door(active):

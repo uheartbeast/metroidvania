@@ -7,6 +7,7 @@ func set_paused(value):
 	get_tree().paused = paused
 	visible = paused
 
+# warning-ignore:unused_argument
 func _process(delta):
 	if Input.is_action_just_pressed("pause"):
 		self.paused = !paused

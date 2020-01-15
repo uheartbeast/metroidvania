@@ -43,6 +43,10 @@ ResourceLoader="*res://ResourceLoader.gd"
 Events="*res://Events.gd"
 SaverAndLoader="*res://SaverAndLoader.gd"
 
+[debug]
+
+gdscript/warnings/return_value_discarded=false
+
 [display]
 
 window/size/width=320
