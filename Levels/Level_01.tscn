@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Levels/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Door.tscn" type="PackedScene" id=2]
 [ext_resource path="res://DoorConnections/00_link_01.tres" type="Resource" id=3]
 [ext_resource path="res://DoorConnections/01_link_02.tres" type="Resource" id=4]
 [ext_resource path="res://World/SaveStation.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/CrawlingEnemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemies/PlantEnemy.tscn" type="PackedScene" id=7]
 
 [node name="Level_01" instance=ExtResource( 1 )]
 
@@ -24,3 +26,10 @@ new_level_path = "res://Levels/Level_02.tscn"
 
 [node name="SaveStation" parent="." index="3" instance=ExtResource( 5 )]
 position = Vector2( 128, 128 )
+
+[node name="CrawlingEnemy" parent="." index="4" instance=ExtResource( 6 )]
+position = Vector2( 96, 128 )
+
+[node name="PlantEnemy" parent="." index="5" instance=ExtResource( 7 )]
+position = Vector2( 144, 64 )
+rotation = -1.5708
