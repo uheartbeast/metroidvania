@@ -695,7 +695,7 @@ radius = 16.0
 [sub_resource type="RayShape2D" id=4]
 length = 16.0
 
-[node name="BossEnemy" index="0" instance=ExtResource( 1 )]
+[node name="BossEnemy" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 MAX_SPEED = 50
 
