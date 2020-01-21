@@ -13,7 +13,7 @@ extents = Vector2( 8, 7 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 7, 6 )
 
-[node name="WalkingEnemy" index="0" instance=ExtResource( 1 )]
+[node name="WalkingEnemy" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 WALKING_DIRECTION = 1
 
