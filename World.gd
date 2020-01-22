@@ -6,6 +6,7 @@ onready var currentLevel = $Level_00
 
 func _ready():
 	VisualServer.set_default_clear_color(Color.black)
+	Music.list_play()
 	
 	if SaverAndLoader.is_loading:
 		SaverAndLoader.load_game()
