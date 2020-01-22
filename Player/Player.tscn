@@ -164,7 +164,9 @@ one_shot = true
 wait_time = 0.25
 one_shot = true
 
-[node name="Hurtbox" parent="." instance=ExtResource( 5 )]
+[node name="Hurtbox" parent="." groups=[
+"Player",
+] instance=ExtResource( 5 )]
 collision_layer = 4
 
 [node name="Collider" parent="Hurtbox" index="0"]

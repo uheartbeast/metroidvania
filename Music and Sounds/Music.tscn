@@ -8,4 +8,5 @@ script = ExtResource( 1 )
 music_list = [ ExtResource( 2 ) ]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]
