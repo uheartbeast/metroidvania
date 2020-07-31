@@ -120,6 +120,18 @@ tracks/1/keys = {
 "method": "set_invincible"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hurtbox/Collider:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="Player" type="KinematicBody2D" groups=[
 "Persists",
